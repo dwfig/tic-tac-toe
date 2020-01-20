@@ -20,7 +20,6 @@ class App extends Component {
     // add a check to make sure the game isn't over
     // add a check to make sure the square isn't full already
     // this.victoryCheck()
-
     if (this.state.gameWon === false && this.state.boardState[squareIndex] === "E"){
       let newBoardState = this.state.boardState
       newBoardState[squareIndex] = this.state.currentPlayer
@@ -37,7 +36,6 @@ class App extends Component {
       this.setState({statusMessage : "Please play in an empty square!"})
     }
     this.victoryCheck()
-
   }
 
   swapPlayer(){
@@ -74,15 +72,16 @@ class App extends Component {
       }
     })
 
-
+    if(!this.state.boardState.includes("E")){
+      this.setState({gameWon: true})
+      this.setState({statusMessage: "Whoops, looks like no one wins this one..."})
+    }
     // need ninth condition for all squares filled and no win
 
-    // console.log("no one wins yet")
     return false
   }
 
   handleVictory = (player) => {
-    // this.setState ( { gameWon : true })
     console.log("we gotta victory")
   }
 
