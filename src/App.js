@@ -19,31 +19,28 @@ class App extends Component {
   handleSquareChange = (squareIndex) => {
     // add a check to make sure the game isn't over
     // add a check to make sure the square isn't full already
-    this.victoryCheck()
+    // this.victoryCheck()
 
     if (this.state.gameWon === false && this.state.boardState[squareIndex] === "E"){
       let newBoardState = this.state.boardState
       newBoardState[squareIndex] = this.state.currentPlayer
       this.setState({boardState : newBoardState})
 
-      this.victoryCheck()
-
       if(this.state.gameWon === true){
         this.handleVictory()
       } else if (this.state.gameWon === false){
-        // console.log(this.victoryCheck())
-        console.log(this.state.gameWon)
         this.setState({statusMessage:"We're playing some tic-tac-toe!"})
         this.swapPlayer()
       }
+
     } else {
       this.setState({statusMessage : "Please play in an empty square!"})
     }
     this.victoryCheck()
+
   }
 
   swapPlayer(){
-    console.log("swap")
     if (this.state.currentPlayer === "X"){
       this.setState({currentPlayer: "O"})
       this.setState({statusMessage:"Ready for O to make a move..."})
@@ -66,10 +63,12 @@ class App extends Component {
       let second = this.state.boardState[rowOfThree[1]]
       let third = this.state.boardState[rowOfThree[2]]
       if (first === "X" && second === "X" && third === "X"){
+        this.handleVictory("X")
         this.setState({gameWon: true})
         this.setState({statusMessage: "Wow a decisive victory for X!"})
       } else if (first === "O" && second === "O" && third === "O"){
         // foundVictory = true
+        this.handleVictory("O")
         this.setState({gameWon: true})
         this.setState({statusMessage: "O brings home a win!"})
       }
@@ -82,13 +81,14 @@ class App extends Component {
     return false
   }
 
-  handleVictory = () =>{
+  handleVictory = (player) => {
     // this.setState ( { gameWon : true })
     console.log("we gotta victory")
   }
 
   handleReset = () => {
     this.setState({boardState : ["E","E","E","E","E","E","E","E","E"]})
+    this.setState({gameWon : false})
   }
 
   render(){
