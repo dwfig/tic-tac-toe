@@ -9,7 +9,7 @@ const GameInfo = props =>{
       <p>Wins for O: {props.oScore}</p>
       <span
         className="resetButton"
-        onClick = {(e) => window.location.reload()}>
+        onClick = {(e) => props.handleReset()}>
         Reset!
       </span>
     </div>

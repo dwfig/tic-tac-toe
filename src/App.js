@@ -32,12 +32,13 @@ class App extends Component {
       } else if (this.state.gameWon === false){
         this.setState({statusMessage:"We're playing some tic-tac-toe!"})
         this.swapPlayer()
+        this.victoryCheck()
       }
 
     } else {
       this.setState({statusMessage : "Please play in an empty square!"})
     }
-    this.victoryCheck()
+    // this.victoryCheck()
   }
 
   swapPlayer(){
@@ -62,11 +63,13 @@ class App extends Component {
       let third = this.state.boardState[rowOfThree[2]]
       if (first === "X" && second === "X" && third === "X"){
         this.handleVictory("X")
-        this.setState({gameWon: true, statusMessage: "Wow a decisive victory for X!"})
+        let newScore = this.state.xScore+1
+        this.setState({gameWon: true, statusMessage: "Wow a decisive victory for X!", xScore: newScore})
       } else if (first === "O" && second === "O" && third === "O"){
         // foundVictory = true
         this.handleVictory("O")
-        this.setState({gameWon: true , statusMessage: "O brings home a win!"})
+        let newScore = this.state.oScore+1
+        this.setState({gameWon: true , statusMessage: "O brings home a win!", oScore: newScore})
         // this.setState()
       }
     })
@@ -98,6 +101,9 @@ class App extends Component {
         currentPlayer = {this.state.currentPlayer}
         gameWon = {this.state.gameWon}
         statusMessage = {this.state.statusMessage}
+        oScore = {this.state.oScore}
+        xScore = {this.state.xScore}
+        handleReset = {this.handleReset}
       />
     </>
   )}
