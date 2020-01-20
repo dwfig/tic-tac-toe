@@ -4,8 +4,12 @@ const GameInfo = props =>{
 
   return (
     <div className="gameInfo">
-      <p>Ready for {props.currentPlayer} to make a move</p>
-      <p>{props.gameWon ? `${props.currentPlayer} wins!` : "Game in Progress"}</p>
+      <p>{props.statusMessage}</p>
+      <span
+        className="resetButton"
+        onClick = {(e) => window.location.reload()}>
+        Reset!
+      </span>
     </div>
   )
 }

@@ -27,3 +27,33 @@ code {
   height: 100%;
   background-color: #EEEFFF;
 }
+
+.boardSquare > h1{
+  font-size: 5em;
+  margin: 10% 20% 10% 25%;
+}
+
+.ESquare{
+  display: none;
+}
+.XSquare{
+  color: #11AAAA;
+}
+.OSquare{
+  color: #AA1177;
+}
+
+.resetButton{
+  color: #990055;
+  background-color: #DDDDDD;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.resetButton:hover{
+  color: #CC3388;
+  background-color: #EEEFFF;
+  cursor: pointer;
+}

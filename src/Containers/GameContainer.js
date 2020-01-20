@@ -6,7 +6,12 @@ const GameContainer = props =>{
   const generateBoardSquares = () => {
     return props.boardState.map((square, index) => {
       return(
-        <BoardSquare mapIndex={index} squareValue={square} />
+        <BoardSquare
+          key = {index}
+          squareIndex={index}
+          squareValue={square}
+          handleSquareChange = {props.handleSquareChange}
+          />
       )
     })
   }
